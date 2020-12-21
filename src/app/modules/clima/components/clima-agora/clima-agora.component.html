@@ -1,0 +1,73 @@
+<div fxFlex="100%" fxLayout="row wrap" class="container">
+    <div fxFlex="100%" fxLayout="row" fxLayoutAlign="center">
+        <form>
+            <mat-form-field>
+                <mat-label>Local</mat-label>
+                <input matInput [(ngModel)]="cidade" [ngModelOptions]="{standalone: true}"/>
+            </mat-form-field>
+            <button mat-raised-button (click)="buscarClimaAgora()">Buscar</button>
+        </form>
+    </div>
+    <div fxFlex="100%" fxLayout="row" fxLayoutAlign="center" *ngIf="mostrarClimaAgora">
+        <mat-card>
+            <h1>Tempo agora em {{detalhesClima.cidade}}</h1>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <img src="https://bmcdn.nl/assets/weather-icons/all/{{detalhesClima.icone}}.svg" width="150" height="150">
+                <div fxLayoutAlign="center center">
+                    <h1>{{detalhesClima.temperaturaAgora}}&deg;</h1>
+                </div>
+            </div>
+            <div fxLayout="row"> 
+                <mat-card-content>
+                    <mat-list>
+                        <mat-list-item>
+                            <div fxFlex="100%">
+                                <div fxFlex="150px" fxLayout="row" fxLayoutAlign="start">
+                                    <i class="fas fa-cloud"></i>
+                                    <p>{{detalhesClima.descricao}}</p>
+                                </div>
+                                <div fxFlex="150px" fxLayout="row" fxLayoutAlign="end">
+                                    <i class="fas fa-temperature-high"></i>
+                                    <p>Sensação {{detalhesClima.sensacaoTermica}}&deg;</p>
+                                </div>
+                            </div>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            <div fxFlex="100%">
+                                <div fxFlex="150px" fxLayout="row" fxLayoutAlign="start">
+                                    Latitude e longitude:
+                                </div>
+                                <div fxFlex="150px" fxLayout="row" fxLayoutAlign="end">
+                                    {{detalhesClima.lat}} | {{detalhesClima.lon}}
+                                </div>
+                            </div>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            <div fxFlex="100%">
+                                <div fxFlex="160px" fxLayout="row" fxLayoutAlign="start">
+                                    Temperatura mínima:
+                                </div>
+                                <div fxFlex="140px" fxLayout="row" fxLayoutAlign="end">
+                                    {{detalhesClima.temperaturaMin}}&deg;
+                                </div>
+                            </div>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            <div fxFlex="100%">
+                                <div fxFlex="160px" fxLayout="row" fxLayoutAlign="start">
+                                    Temperatura máxima:
+                                </div>
+                                <div fxFlex="140px" fxLayout="row" fxLayoutAlign="end">
+                                    {{detalhesClima.temperaturaMax}}&deg;
+                                </div>
+                            </div>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card-content>
+            </div>
+        </mat-card>
+    </div>
+</div>
